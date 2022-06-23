@@ -1,0 +1,32 @@
+<div>
+    <h3>{{ pet.nome|capfirst }}</h3>
+    <p>{{ pet.especie }}</p>
+    {% if pet.raca %}
+        <p>Raça: {{pet.raca}}</p>
+    {% endif %}
+
+    {% if pet.idade %}
+        <p>Idade: {{pet.idade}}</p>
+    {% endif %}
+
+    {% if pet.sexo %}
+        <p>Sexo: {{pet.sexo}}</p>
+    {% endif %}
+
+    {% if pet.peso %}
+        <p>Peso: {{pet.peso}}</p>
+    {% endif %}
+
+    {% if pet.vacinas.all %}
+        <p>Vacinado com: </p>
+        <ul>
+            {% for vacinas in pet.vacinas.all %}
+                <li> {{ vacinas.nome }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <p> Submetido por: {{ pet.tutor }}</p>
+    <p> Submetido em: {{ pet.data_submissao|date:"d M Y"}} </p>
+    <p> {{ pet.descricao }}</p>
+</div>
