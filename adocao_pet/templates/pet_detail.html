@@ -1,12 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
 <div>
     <h3>{{ pet.nome|capfirst }}</h3>
-    <p>{{ pet.especie }}</p>
+
+    <p>Espécie: {{ pet.especie }}</p>
+
     {% if pet.raca %}
         <p>Raça: {{pet.raca}}</p>
     {% endif %}
 
     {% if pet.idade %}
-        <p>Idade: {{pet.idade}}</p>
+        <p>Idade: {{pet.idade}} anos</p>
     {% endif %}
 
     {% if pet.sexo %}
@@ -14,7 +18,7 @@
     {% endif %}
 
     {% if pet.peso %}
-        <p>Peso: {{pet.peso}}</p>
+        <p>Peso: {{pet.peso}} KG</p>
     {% endif %}
 
     {% if pet.vacinas.all %}
@@ -26,7 +30,18 @@
         </ul>
     {% endif %}
 
+    {% if pet.microchip %}
+        <p>Microchip: {{pet.microchip}} </p>
+    {% endif %}
+
+    {% if pet.localizacao %}
+        <p>Localização: {{pet.localizacao}} </p>
+    {% endif %}
+
+    <p> Descrição: {{ pet.descricao }}</p>
+
     <p> Submetido por: {{ pet.tutor }}</p>
     <p> Submetido em: {{ pet.data_submissao|date:"d M Y"}} </p>
-    <p> {{ pet.descricao }}</p>
+
 </div>
+{% endblock %}
