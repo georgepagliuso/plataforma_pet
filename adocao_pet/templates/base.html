@@ -79,8 +79,9 @@
         white-space: nowrap;
         -webkit-overflow-scrolling: touch;
       }
-
-     
+      h1{
+font-weight: bold;
+}
     </style>
 
     
@@ -92,28 +93,28 @@
   <section class="py-5 text-center container">
     <div class="row py-lg-5">
       <div class="col-lg-6 col-md-8 mx-auto">
-        <h1 class="fw-light">Adoção Responsável</h1>
-        <p class="lead text-muted">Gostaria de adotar um Pet? Nesta plataforma você vai encontrar diversos animais disponíveis para adoção que atualmente estão em cuidados de ONGs e Canis.</p>
+        <h1 class="fw-light" style="font-size:80px;text-align:center;">Adoção Responsável</h1>
+        <br>
+        <p style="font-size:30px;text-align:center; color:black">Gostaria de adotar um Pet? Nesta plataforma você vai encontrar diversos animais disponíveis para adoção que atualmente estão em cuidados de ONGs e Canis.</p>
       </div>
     </div>
   </section>
   <center><img src="{% static 'header.jpg'%}" height=auto class="img-fluid" alt="Responsive image"></img></center>
-  
+  <p style="font-size:18px;text-align:center; color:black">ALT: Imagem com diversos animais.</p>
 
   <div class="album py-5 bg-light">
+    
     <div class="container">
-
-      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+      <div class="row"> 
         {% for pet in pets %}
-
         <div class="col">
           <a href="{% url 'pet_detail' pet.id %}">
-          <div class="card shadow-sm">
+          <div class="card shadow-sm"> 
             <img class="card-img-top" src="{{ pet.image.url }}">
             <div class="card-body">
-              <p class="card-text">{{ pet.nome }}</p>
-            </div>
-          </div>
+              <strong><p class="card-text" style="font-size:30px;text-align:center;">{{ pet.nome }}</p></strong>
+            </div> 
+          </div> 
         </div>
         {% endfor %}
       </div>

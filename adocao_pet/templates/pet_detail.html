@@ -81,43 +81,106 @@
 
      
     </style>
+  <script type='text/javascript'
+  src='http://www.bing.com/api/maps/mapcontrol?callback=GetMap&key=Ao9h4POaRvY6WfI1OH4GtlWupNwZr2kQBubqht-iFqX7SDIu19ZbFMeIVdeUF901' 
+  async defer></script>
 
-    
+{% if pet.localizacao == 'Araraquara-SP' %}
+<script type='text/javascript'>
+function GetMap()
+{
+var map = new Microsoft.Maps.Map('#myMap', {
+    credentials: 'Ao9h4POaRvY6WfI1OH4GtlWupNwZr2kQBubqht-iFqX7SDIu19ZbFMeIVdeUF901',
+    center: new Microsoft.Maps.Location(-21.78867149, -48.17731094),
+    mapTypeId: Microsoft.Maps.MapTypeId.aerial,
+    zoom: 10
+});
+
+//Add your post map load code here.
+}
+</script>
+{% endif %}
+
+{% if pet.localizacao == 'Matão-SP' %}
+<script type='text/javascript'>
+function GetMap()
+{
+var map = new Microsoft.Maps.Map('#myMap', {
+    credentials: 'Ao9h4POaRvY6WfI1OH4GtlWupNwZr2kQBubqht-iFqX7SDIu19ZbFMeIVdeUF901',
+    center: new Microsoft.Maps.Location(-21.60336113, -48.36606216),
+    mapTypeId: Microsoft.Maps.MapTypeId.aerial,
+    zoom: 10
+});
+
+//Add your post map load code here.
+}
+</script>
+{% endif %}
+
+{% if pet.localizacao == 'São Carlos-SP' %}
+<script type='text/javascript'>
+function GetMap()
+{
+var map = new Microsoft.Maps.Map('#myMap', {
+    credentials: 'Ao9h4POaRvY6WfI1OH4GtlWupNwZr2kQBubqht-iFqX7SDIu19ZbFMeIVdeUF901',
+    center: new Microsoft.Maps.Location(-22.0180397, -47.89115524),
+    mapTypeId: Microsoft.Maps.MapTypeId.aerial,
+    zoom: 10
+});
+
+//Add your post map load code here.
+}
+</script>
+{% endif %}
+
   </head>
   <body>
 
 <main>
-
+  
   <section class="py-5 text-center container">
     <div class="row py-lg-5">
       <div class="col-lg-6 col-md-8 mx-auto">
         <h1 class="fw-light">{{pet.nome}}</h1>
         <img class="card-img-top" src="{{ pet.image.url }}">
-        <p class="lead text-muted">{{pet.descricao}}</p>
-            <p>Espécie: {{pet.especie}}</p> 
-            <p>Raça: {{pet.raca}}</p> 
-            <p>Sexo: {{pet.sexo}}</p> 
-            <p>Idade: {{pet.idade}}</p> 
-            <p>Peso: {{pet.peso}}</p> 
+        <p style="font-size:18px;text-align:center; color:black">ALT: {{pet.alt_texto}}</p>
+        <br><br>
+        <p style="font-size:35px;text-align:center; color:black">{{pet.descricao}}</p>
+            <br>
+            <p style="font-size:25px;"><b>Espécie:</b> {{pet.especie}}</p> 
+            <p style="font-size:25px;"><b>Raça:</b> {{pet.raca}}</p> 
+            <p style="font-size:25px;"><b>Sexo:</b> {{pet.sexo}}</p> 
+            <p style="font-size:25px;"><b>Idade:</b> {{pet.idade}} Anos</p>
+            <p style="font-size:25px;"><b>Peso:</b> {{pet.peso}} KG</p> 
 
             {% if pet.vacinas.all %}
-                <p>Vacinado com: 
+                <p style="font-size:25px;"><b>Vacinado com:</b> 
                     {% for vacinas in pet.vacinas.all %}
                         {{ vacinas.nome }}; 
                     {% endfor %}
                 </p>
             {% endif %}
-            <p>Microchip: {{pet.microchip}}</p> 
-            <p>Tutor: {{pet.tutor}}</p> 
-            <p>Localização: {{pet.localizacao}}</p> 
+            <p style="font-size:25px;"><b>Microchip:</b> {{pet.microchip}}</p> 
+            <p style="font-size:25px;"><b>Tutor:</b> {{pet.tutor}}</p> 
+            <p style="font-size:25px;"><b>Localização:</b> {{pet.localizacao}}</p> 
+            <p style="font-size:25px;"><b>E-mail:</b> {{pet.contato_email}}</p> 
+            
+            <div id="myMap" style="position:relative;width:600px;height:400px;"></div>
+            <br><br>
             <p>
-                <a href="{% url 'home' %}" class="btn btn-primary my-2">Voltar</a>
+                <a href="{% url 'home' %}" class="btn btn-primary btn-block"><b>Voltar</b></a>
             </p>
+
+            
+</body>
         
       </div>
     </div>
+    
   </section>
    
+  
+ 
 </main>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
