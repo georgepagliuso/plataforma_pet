@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import Http404
 
 from .models import Pet
@@ -16,5 +16,5 @@ def pet_detail(request, pet_id):
         raise Http404('pet não encontrado')
     return render(request, 'pet_detail.html', {
         'pet': pet,
-    })    
+   })    
 

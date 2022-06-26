@@ -15,6 +15,7 @@ class Pet(models.Model):
     peso = models.IntegerField(null=True)
     microchip = models.IntegerField(null=True)
     localizacao = models.CharField(max_length=100)
+    image = models.ImageField(upload_to='images/')
 
 class Vacina(models.Model):
     nome=models.CharField(max_length=50)
